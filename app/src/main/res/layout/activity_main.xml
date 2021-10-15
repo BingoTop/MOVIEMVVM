@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:overScrollMode="never">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".presentation.views.list.MainActivity">
+
+            <TextView
+                android:id="@+id/list_tv_header"
+                style="@style/list_tv_title"
+                android:layout_marginLeft="@dimen/list_tv_top_title_margin_left"
+                android:layout_marginTop="@dimen/list_tv_top_title_margin_top"
+                android:text="@string/list_tv_now_playing"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_rv_now_playing"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/list_rv_now_playing_margin_top"
+                android:overScrollMode="never"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/list_tv_header"
+                app:layout_constraintTop_toBottomOf="@+id/list_tv_header" />
+
+            <TextView
+                android:id="@+id/list_tv_coming_soon"
+                style="@style/list_tv_title"
+                android:layout_marginTop="@dimen/list_tv_first_title_margin_top"
+                android:text="@string/list_tv_coming_soon"
+                app:layout_constraintStart_toStartOf="@+id/list_rv_now_playing"
+                app:layout_constraintTop_toBottomOf="@id/list_rv_now_playing" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_rv_coming_soon"
+                style="@style/list_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/list_tv_coming_soon" />
+
+            <TextView
+                android:id="@+id/list_tv_popular"
+                style="@style/list_tv_title"
+                android:text="@string/list_tv_popular"
+                app:layout_constraintStart_toStartOf="@+id/list_tv_coming_soon"
+                app:layout_constraintTop_toBottomOf="@+id/list_rv_coming_soon" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_rv_polular"
+                style="@style/list_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                app:layout_constraintTop_toBottomOf="@+id/list_tv_popular" />
+
+            <TextView
+                android:id="@+id/list_tv_high_rated"
+                style="@style/list_tv_title"
+                android:text="@string/list_tv_high_rated"
+                app:layout_constraintStart_toStartOf="@+id/list_tv_popular"
+                app:layout_constraintTop_toBottomOf="@+id/list_rv_polular" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_rv_high_rated"
+                style="@style/list_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:layout_marginBottom="76dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/list_tv_high_rated" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

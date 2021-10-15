@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.james.movietmdb.presentation.views.detail.DetailViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbarlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collasping_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contentScrim="@color/star_yellow"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+
+                <ImageView
+                    android:id="@+id/detail_iv_poster_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:scaleType="centerCrop"
+                    />
+
+                <ImageView
+                    android:id="@+id/detail_iv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:src="@drawable/ic_chevron_left" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/detail_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/detail_iv_poster_path"
+                    android:layout_width="104dp"
+                    android:layout_height="159dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="15dp"
+                    android:scaleType="fitXY"
+                    app:layout_anchorGravity="start|bottom|left"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/detail_tv_movie_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="136dp"
+                    android:fontFamily="@font/notosanskr_bold"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toTopOf="@+id/detail_tv_adult_tag"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/detail_iv_poster_path"
+                    tools:text="미드나이트 스카이" />
+
+                <TextView
+                    android:id="@+id/detail_tv_adult_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/adult_tag"
+                    android:fontFamily="@font/notosanskr_thin"
+                    android:includeFontPadding="false"
+                    android:paddingVertical="1dp"
+                    android:paddingHorizontal="4dp"
+                    android:text="@string/detail_tv_adult"
+                    android:textColor="@drawable/adult_tag"
+                    android:textSize="7sp"
+                    app:layout_constraintBottom_toTopOf="@+id/detail_tv_genres"
+                    app:layout_constraintStart_toStartOf="@+id/detail_tv_movie_title"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_tv_movie_title" />
+
+                <TextView
+                    android:id="@+id/detail_tv_genres"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/list_rv_margin_horizontal"
+                    android:fontFamily="@font/notosanskr_thin"
+                    android:includeFontPadding="false"
+                    android:textColor="#B9B9B9"
+                    app:layout_constraintBottom_toTopOf="@+id/detail_tv_release_date"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/detail_tv_adult_tag"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_tv_adult_tag"
+                    tools:text="액션, 드라마" />
+
+                <TextView
+                    android:id="@+id/detail_tv_release_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanskr_thin"
+                    android:includeFontPadding="false"
+                    android:textColor="#B9B9B9"
+                    app:layout_constraintBottom_toTopOf="@+id/detail_tv_movie_average"
+                    app:layout_constraintStart_toStartOf="@+id/detail_tv_genres"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_tv_genres"
+                    tools:text="2021-10-21 발매" />
+
+
+                <TextView
+                    android:id="@+id/detail_tv_movie_average"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/notosanskr_light"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/star_yellow"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/detail_rb_star"
+                    app:layout_constraintStart_toEndOf="@+id/detail_rb_star"
+                    app:layout_constraintTop_toTopOf="@+id/detail_rb_star"
+                    tools:text="0.2" />
+
+                <RatingBar
+                    android:id="@+id/detail_rb_star"
+                    style="@style/detailRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:isIndicator="false"
+                    android:numStars="5"
+                    android:progressTint="@color/star_yellow"
+                    app:layout_constraintBottom_toBottomOf="@+id/detail_iv_poster_path"
+                    app:layout_constraintStart_toStartOf="@+id/detail_tv_release_date" />
+
+                <TextView
+                    android:id="@+id/detail_tv_overview_info"
+                    style="@style/detail_info_title"
+                    android:text="@string/detail_tv_overview"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_iv_poster_path" />
+
+                <TextView
+                    android:id="@+id/detail_tv_overview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/list_rv_margin_horizontal"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:textColor="@color/detail_tv_overview_text_color"
+                    app:layout_constraintTop_toBottomOf="@id/detail_tv_overview_info"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:text="종말을 맞이한 지구, 북극에는 외로운 과학자 오거스틴이 살아있다. 오거스틴은 탐사를 마치고 귀환하던 중 지구와 연락이 끊긴 우주 비행사 설리가 짧은 교신에 성공한다. 그는 설리와 그녀의 동료 우주 비행사들이 원인 불명의 재앙을 맞은 지구로 귀환하는 것을 막고자 분투하는데... " />
+
+                <TextView
+                    android:id="@+id/detail_tv_credits_info"
+                    style="@style/detail_info_title"
+                    android:text="@string/detail_tv_credits"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detail_tv_overview" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/detail_rv_credits"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/list_rv_margin_horizontal"
+                    android:overScrollMode="never"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_tv_credits_info" />
+
+                <TextView
+                    android:id="@+id/detail_tv_review_info"
+                    style="@style/detail_info_title"
+                    android:text="@string/detail_tv_review"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detail_rv_credits" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/detail_rv_review"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/review_rv_margin_horizontal"
+                    android:layout_marginBottom="76dp"
+                    android:overScrollMode="never"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detail_tv_review_info"
+                    tools:layout_editor_absoluteX="16dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.james.movietmdb.domain.model.list.Movie" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/item_movie_root_margin_bottom">
+
+        <androidx.cardview.widget.CardView
+            android:clipToPadding="false"
+            android:id="@+id/item_movie_cv"
+            android:layout_width="45dp"
+            android:layout_height="69dp"
+            app:cardCornerRadius="@dimen/item_movie_radius"
+            app:cardElevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:posterPath="@{movie.posterPath}"
+                tools:src="@drawable/ic_launcher_background" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/item_movie_tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/item_movie_title_margin_start"
+            android:layout_marginTop="@dimen/item_movie_title_margin_top"
+            android:layout_marginEnd="100dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
+            android:text="@{movie.title}"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_movie_cv"
+            app:layout_constraintTop_toTopOf="@+id/item_movie_cv"
+            tools:text="미션 임파서블" />
+
+        <ImageView
+            android:id="@+id/item_movie_iv_star1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/item_movie_iv_star_margin_top"
+            android:src="@drawable/star_inactive"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/item_movie_cv"
+            app:layout_constraintStart_toStartOf="@id/item_movie_tv_title"
+            app:layout_constraintTop_toBottomOf="@id/item_movie_tv_title" />
+
+        <ImageView
+            android:id="@+id/item_movie_iv_star2"
+            style="@style/item_movie_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/item_movie_iv_star_margin_top"
+            android:src="@drawable/star_inactive"
+            app:layout_constraintStart_toEndOf="@+id/item_movie_iv_star1"
+            app:layout_constraintTop_toBottomOf="@id/item_movie_tv_title" />
+
+        <ImageView
+            android:id="@+id/item_movie_iv_star3"
+            style="@style/item_movie_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/item_movie_iv_star_margin_top"
+            android:src="@drawable/star_inactive"
+            app:layout_constraintStart_toEndOf="@+id/item_movie_iv_star2"
+            app:layout_constraintTop_toBottomOf="@id/item_movie_tv_title" />
+
+        <ImageView
+            android:id="@+id/item_movie_iv_star4"
+            style="@style/item_movie_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/item_movie_iv_star_margin_top"
+            android:src="@drawable/star_inactive"
+            app:layout_constraintStart_toEndOf="@+id/item_movie_iv_star3"
+            app:layout_constraintTop_toBottomOf="@id/item_movie_tv_title" />
+
+        <ImageView
+            android:id="@+id/item_movie_iv_star5"
+            style="@style/item_movie_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/item_movie_iv_star_margin_top"
+            android:src="@drawable/star_inactive"
+            app:layout_constraintStart_toEndOf="@+id/item_movie_iv_star4"
+            app:layout_constraintTop_toBottomOf="@id/item_movie_tv_title" />
+
+        <TextView
+            android:id="@+id/item_movie_tv_genre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanskr_light"
+            android:includeFontPadding="false"
+            android:textColor="@color/item_movie_tv_genre_color"
+            android:textSize="9sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/item_movie_tv_title"
+            tools:text="Action,Drama" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/notosanskr_light"
+            android:includeFontPadding="false"
+            android:text="@{movie.releaseDate}"
+            android:textColor="@color/item_movie_tv_genre_color"
+            android:textSize="9sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="2021-08-08" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
